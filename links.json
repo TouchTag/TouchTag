@@ -1,0 +1,29 @@
+{
+  "brandName": "TouchTag",
+  "tagline": "Smart NFC Keychains • One tap to connect",
+  "links": [
+    {
+      "title": "Facebook",
+      "subtitle": "Follow us on Facebook",
+      "url": "https://facebook.com/Touch.Tag0",
+      "icon": "fa-facebook-f"
+    },
+    {
+      "title": "Instagram",
+      "subtitle": "@touc.htag",
+      "url": "https://instagram.com/touc.htag",
+      "icon": "fa-instagram"
+    },
+    {
+      "title": "WhatsApp",
+      "subtitle": "Chat with us directly",
+      "url": "https://wa.me/962795878887",
+      "icon": "fa-whatsapp"
+    }
+     "title": "Email",
+      "subtitle": "info@faresadv.com",
+      "url": "mailto:info@faresadv.com",
+      "icon": "fa-envelope"
+    }
+  ]
+}
