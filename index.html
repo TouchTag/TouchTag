@@ -10,159 +10,306 @@
 
   <style>
     :root{
-      --bg1:#0b0b10;
-      --bg2:#141424;
-      --stroke:#ffffff14;
-      --text:#f7f7fb;
-      --muted:#c9c9d6;
+      --bg:#0b0b10;
+      --card:#111118;
+      --card2:#0f0f15;
+      --text:#f6f6fb;
+      --muted:#bfc0d0;
+      --stroke:#ffffff12;
+      --shadow: 0 16px 50px rgba(0,0,0,.55);
       --brand:#ff6a00;
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius: 18px;
+      --radius:22px;
     }
-    *{box-sizing:border-box}
+    *{ box-sizing:border-box; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--text);
       background:
-        radial-gradient(900px 500px at 15% 10%, #ff6a0018, transparent 55%),
-        radial-gradient(800px 500px at 85% 20%, #7c4dff18, transparent 55%),
-        radial-gradient(700px 500px at 50% 90%, #00d1ff14, transparent 55%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+        radial-gradient(900px 500px at 50% -10%, rgba(255,106,0,.18), transparent 60%),
+        linear-gradient(180deg, #06060a, #0b0b10 35%, #070710);
+      color:var(--text);
       min-height:100vh;
-      overflow-x:hidden;
+    }
+    .wrap{
+      max-width:420px;
+      margin:0 auto;
+      padding:22px 14px 40px;
     }
 
-    .wrap{ max-width:520px; margin:0 auto; padding:26px 18px 40px; }
-    .card{
-      margin-top:18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--stroke);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:18px;
-      backdrop-filter: blur(10px);
+    /* Header */
+    .header{
+      text-align:center;
+      padding:18px 10px 8px;
     }
-    .top{ display:flex; align-items:center; gap:14px; padding:14px 14px 10px; }
     .logo{
-      width:58px; height:58px; border-radius:16px;
-      background:#1a1a2a; border:1px solid var(--stroke);
-      overflow:hidden; display:grid; place-items:center; flex:0 0 auto;
+      width:96px; height:96px;
+      border-radius:50%;
+      margin: 8px auto 14px;
+      background: #141423;
+      border: 6px solid #ffffff10;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      position:relative;
+    }
+    .logo::after{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius:50%;
+      background: conic-gradient(from 220deg, rgba(255,106,0,.0), rgba(255,106,0,.55), rgba(255,106,0,.0));
+      filter: blur(10px);
+      opacity:.55;
+      z-index:-1;
     }
     .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .fallback{ font-weight:800; font-size:22px; color:var(--brand); letter-spacing:.5px; }
-    h1{ margin:0; font-size:22px; letter-spacing:.2px; }
-    .tagline{ margin:6px 0 0; color:var(--muted); font-size:13px; }
+    .fallback{
+      font-weight:900; font-size:28px;
+      color:var(--brand);
+    }
+    h1{
+      margin:0;
+      font-size:22px;
+      letter-spacing:.2px;
+    }
+    .tagline{
+      margin:8px 0 12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
 
-    .links{ display:flex; flex-direction:column; gap:12px; margin-top:10px; padding:6px; }
+    /* Social pills */
+    .social{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin: 12px 0 14px;
+    }
+    .sbtn{
+      width:42px; height:42px;
+      border-radius:50%;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--stroke);
+      color: var(--text);
+      text-decoration:none;
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      transition: transform .15s ease, background .2s ease;
+    }
+    .sbtn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.09); }
+
+    /* Map card (optional) */
+    .map{
+      margin: 8px 0 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      overflow:hidden;
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+    .map .img{
+      height:130px;
+      background:
+        radial-gradient(900px 400px at 20% 10%, rgba(255,106,0,.16), transparent 55%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(255,255,255,.8);
+      font-size:14px;
+      position:relative;
+    }
+    .map a{
+      display:block;
+      text-align:center;
+      padding:10px 12px;
+      background: rgba(0,0,0,.35);
+      color: var(--text);
+      text-decoration:none;
+      font-size:13px;
+      border-top: 1px solid var(--stroke);
+    }
+
+    /* Big buttons */
+    .list{ display:flex; flex-direction:column; gap:12px; }
     .btn{
-      display:flex; align-items:center; gap:12px;
-      padding:14px 14px; border-radius:16px; text-decoration:none; color:var(--text);
-      background: rgba(16,16,26,.55);
-      border:1px solid var(--stroke);
-      transition: transform .12s ease, background .2s ease, border-color .2s ease;
-      position:relative; overflow:hidden;
-      opacity:0; transform: translateY(10px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 14px;
+      background: linear-gradient(180deg, #141421, #0e0e16);
+      border: 1px solid #ffffff12;
+      border-radius: 18px;
+      text-decoration:none;
+      color: var(--text);
+      box-shadow: 0 16px 46px rgba(0,0,0,.40);
+      position:relative;
+      overflow:hidden;
+      opacity:0;
+      transform: translateY(10px);
     }
     .btn.show{ opacity:1; transform: translateY(0); transition: all .35s ease; }
-    .btn:active{ transform: scale(.985); }
+
     .btn::before{
-      content:""; position:absolute; inset:-2px;
-      background: linear-gradient(90deg, transparent, rgba(255,106,0,.35), transparent);
-      transform: translateX(-120%); transition: transform .5s ease;
+      content:"";
+      position:absolute; inset:-2px;
+      background: linear-gradient(90deg, transparent, rgba(255,106,0,.25), transparent);
+      transform: translateX(-130%);
+      transition: transform .6s ease;
     }
-    .btn:hover::before{ transform: translateX(120%); }
+    .btn:hover::before{ transform: translateX(130%); }
 
-    .icon{
-      width:42px; height:42px; border-radius:14px;
+    .left{
+      display:flex; gap:12px; align-items:center;
+      min-width:0;
+    }
+    .ic{
+      width:44px; height:44px;
+      border-radius:14px;
       display:grid; place-items:center;
-      background: linear-gradient(180deg, rgba(255,106,0,.18), rgba(255,255,255,.02));
-      border:1px solid rgba(255,106,0,.18);
-      flex:0 0 auto; font-size:18px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid #ffffff14;
+      font-size:18px;
+      flex: 0 0 auto;
     }
-    .text{ flex:1; display:flex; flex-direction:column; gap:3px; min-width:0; }
-    .text b{ font-size:15px; font-weight:700; }
-    .text span{ font-size:12.5px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .arrow{ opacity:.75; }
-
-    .badge{
-      margin-top:12px; text-align:center; color:var(--muted); font-size:12px;
-      padding:8px 12px; border-radius:999px;
-      border:1px solid var(--stroke);
-      background: rgba(16,16,26,.35);
+    .txt{ min-width:0; }
+    .txt b{ display:block; font-size:15px; }
+    .txt small{
+      display:block;
+      color: var(--muted);
+      margin-top:3px;
+      font-size:12.5px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width: 250px;
     }
-    .footer{ margin-top:14px; text-align:center; font-size:12px; color:#bdbdd0; opacity:.9; }
+    .arrow{ opacity:.8; }
 
-    .error{ padding:14px; margin:10px 6px; border:1px solid #ff4d4d55; border-radius:14px; background:#ff4d4d12; color:#ffd2d2; }
+    .footer{
+      text-align:center;
+      color: #bdbdd0;
+      opacity:.9;
+      font-size:12px;
+      margin-top:16px;
+    }
+
+    .error{
+      background:#ff4d4d12;
+      border:1px solid #ff4d4d55;
+      color:#ffd1d1;
+      padding:12px;
+      border-radius:14px;
+      margin-top:12px;
+      font-size:13px;
+    }
   </style>
 </head>
-
 <body>
   <div class="wrap">
-    <div class="card">
-      <div class="top">
-        <div class="logo">
-          <img src="logo.png" alt="TouchTag"
-               onerror="this.remove(); this.parentElement.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>T</div>')" />
-        </div>
-        <div>
-          <h1 id="brandName">TouchTag</h1>
-          <p class="tagline" id="tagline">Loading…</p>
-        </div>
+
+    <div class="header">
+      <div class="logo" id="logoBox">
+        <img id="logoImg" src="logo.png" alt="TouchTag"
+             onerror="this.remove(); document.getElementById('logoBox').insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>TT</div>')" />
       </div>
 
-      <div class="links" id="links"></div>
+      <h1 id="brandName">TouchTag</h1>
+      <div class="tagline" id="tagline">Loading…</div>
 
-      <div class="badge">Made in Jordan • Powered by TouchTag</div>
-      <div class="footer">© TouchTag</div>
+      <div class="social" id="social"></div>
     </div>
+
+    <div class="map" id="map" style="display:none;">
+      <div class="img">
+        <i class="fa-solid fa-location-dot" style="font-size:22px; margin-right:8px;"></i>
+        Location Preview
+      </div>
+      <a id="mapBtn" href="#" target="_blank" rel="noopener">See Our Location</a>
+    </div>
+
+    <div class="list" id="list"></div>
+
+    <div class="footer">© TouchTag</div>
   </div>
 
   <script>
-    async function loadLinks(){
-      const linksEl = document.getElementById('links');
+    async function init(){
+      const list = document.getElementById('list');
+      const social = document.getElementById('social');
+
       try{
-        // cache-bust so updates appear fast
-        const res = await fetch('links.json?ts=' + Date.now(), { cache: 'no-store' });
-        if(!res.ok) throw new Error('Failed to load links.json');
+        const res = await fetch('links.json?ts=' + Date.now(), { cache:'no-store' });
+        if(!res.ok) throw new Error('links.json not found');
         const data = await res.json();
 
         document.getElementById('brandName').textContent = data.brandName || 'TouchTag';
         document.getElementById('tagline').textContent = data.tagline || '';
 
-        linksEl.innerHTML = '';
-        (data.links || []).forEach((item, i) => {
+        // logo from json if provided
+        if(data.logo){
+          const img = document.getElementById('logoImg');
+          if(img) img.src = data.logo + '?ts=' + Date.now();
+        }
+
+        // social icons
+        social.innerHTML = '';
+        (data.social || []).forEach(s => {
+          const a = document.createElement('a');
+          a.className = 'sbtn';
+          a.href = s.url;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.innerHTML = `<i class="fa-brands ${s.icon}"></i>`;
+          social.appendChild(a);
+        });
+
+        // map
+        if(data.map && data.map.enabled){
+          document.getElementById('map').style.display = 'block';
+          const mb = document.getElementById('mapBtn');
+          mb.textContent = data.map.buttonText || 'See Our Location';
+          mb.href = data.map.url || '#';
+        }
+
+        // big buttons
+        list.innerHTML = '';
+        (data.buttons || []).forEach((b, i) => {
           const a = document.createElement('a');
           a.className = 'btn';
-          a.href = item.url;
+          a.href = b.url;
           a.target = '_blank';
           a.rel = 'noopener';
 
-          const iconClass = item.icon || 'fa-link';
-          const iconHtml =
-            iconClass.startsWith('fa-')
-              ? `<i class="fa-brands ${iconClass}"></i>`
-              : `<i class="fa-solid ${iconClass}"></i>`;
+          const isBrand = (b.icon || '').startsWith('fa-');
+          const iconHTML = isBrand
+            ? `<i class="fa-brands ${b.icon}"></i>`
+            : `<i class="fa-solid ${b.icon || 'fa-link'}"></i>`;
 
           a.innerHTML = `
-            <div class="icon">${iconHtml}</div>
-            <div class="text">
-              <b>${item.title || 'Link'}</b>
-              <span>${item.subtitle || ''}</span>
+            <div class="left">
+              <div class="ic">${iconHTML}</div>
+              <div class="txt">
+                <b>${b.title || 'Link'}</b>
+                <small>${b.subtitle || ''}</small>
+              </div>
             </div>
-            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+            <i class="fa-solid fa-chevron-right arrow"></i>
           `;
 
-          linksEl.appendChild(a);
-          setTimeout(() => a.classList.add('show'), 120 + i * 90);
+          list.appendChild(a);
+          setTimeout(()=>a.classList.add('show'), 140 + i*90);
         });
 
       }catch(e){
-        linksEl.innerHTML = `<div class="error">Error: ${e.message}</div>`;
+        list.innerHTML = `<div class="error">Error: ${e.message}<br/>Make sure links.json exists in the repo root.</div>`;
         document.getElementById('tagline').textContent = 'Please check links.json';
       }
     }
-    loadLinks();
+
+    init();
   </script>
 </body>
 </html>
