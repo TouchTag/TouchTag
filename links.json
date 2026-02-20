@@ -1,36 +1,41 @@
 {
   "brandName": "TouchTag",
   "tagline": "Smart NFC Keychains • One tap to connect",
-  "links": [
+  "logo": "logo.png",
+  "social": [
+    { "icon": "fa-facebook-f", "url": "https://facebook.com/Touch.Tag0" },
+    { "icon": "fa-instagram", "url": "https://instagram.com/touc.htag" },
+    { "icon": "fa-whatsapp", "url": "https://wa.me/962795878887" }
+  ],
+  "map": {
+    "enabled": true,
+    "buttonText": "See Our Location",
+    "url": "https://maps.app.goo.gl/xrUqr57W4XzgUFqVA"
+  },
+  "buttons": [
     {
-        "title": "Call Now",
-      "subtitle": "+962 79 587 8887",
-      "url": "tel:+962795878887",
-      "icon": "fa-phone"
+      "title": "Chat on WhatsApp",
+      "subtitle": "Direct message for quick response",
+      "icon": "fa-whatsapp",
+      "url": "https://wa.me/962795878887"
     },
     {
-      "title": "Facebook",
-      "subtitle": "Follow us on Facebook",
-      "url": "https://facebook.com/Touch.Tag0",
-      "icon": "fa-facebook-f"
+      "title": "Call us",
+      "subtitle": "+962 79 587 8887",
+      "icon": "fa-phone",
+      "url": "tel:+962795878887"
     },
     {
       "title": "Instagram",
-      "subtitle": "Follow us on Instagram",
-      "url": "https://instagram.com/touc.htag",
-      "icon": "fa-instagram"
+      "subtitle": "Follow our page",
+      "icon": "fa-instagram",
+      "url": "https://instagram.com/touc.htag"
     },
     {
-      "title": "WhatsApp",
-      "subtitle": "Chat with us directly",
-      "url": "https://wa.me/962795878887",
-      "icon": "fa-whatsapp"
-     },
-    {
-     "title": "Email",
-      "subtitle": "info@faresadv.com",
-      "url": "mailto:info@faresadv.com",
-      "icon": "fa-envelope"
+      "title": "Facebook",
+      "subtitle": "Follow our page",
+      "icon": "fa-facebook-f",
+      "url": "https://facebook.com/Touch.Tag0"
     }
   ]
 }
