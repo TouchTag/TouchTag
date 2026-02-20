@@ -1,39 +1,168 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>TouchTag Links</title>
-<style>
-body{
-  font-family: Arial;
-  background:#111;
-  color:white;
-  text-align:center;
-  padding-top:60px;
-}
-a{
-  display:block;
-  width:80%;
-  margin:15px auto;
-  padding:15px;
-  background:#ff6600;
-  color:white;
-  text-decoration:none;
-  border-radius:10px;
-  font-size:18px;
-}
-a:hover{
-  background:#ff8800;
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TouchTag | Links</title>
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg1:#0b0b10;
+      --bg2:#141424;
+      --stroke:#ffffff14;
+      --text:#f7f7fb;
+      --muted:#c9c9d6;
+      --brand:#ff6a00;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 10%, #ff6a0018, transparent 55%),
+        radial-gradient(800px 500px at 85% 20%, #7c4dff18, transparent 55%),
+        radial-gradient(700px 500px at 50% 90%, #00d1ff14, transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .wrap{ max-width:520px; margin:0 auto; padding:26px 18px 40px; }
+    .card{
+      margin-top:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      backdrop-filter: blur(10px);
+    }
+    .top{ display:flex; align-items:center; gap:14px; padding:14px 14px 10px; }
+    .logo{
+      width:58px; height:58px; border-radius:16px;
+      background:#1a1a2a; border:1px solid var(--stroke);
+      overflow:hidden; display:grid; place-items:center; flex:0 0 auto;
+    }
+    .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .fallback{ font-weight:800; font-size:22px; color:var(--brand); letter-spacing:.5px; }
+    h1{ margin:0; font-size:22px; letter-spacing:.2px; }
+    .tagline{ margin:6px 0 0; color:var(--muted); font-size:13px; }
+
+    .links{ display:flex; flex-direction:column; gap:12px; margin-top:10px; padding:6px; }
+    .btn{
+      display:flex; align-items:center; gap:12px;
+      padding:14px 14px; border-radius:16px; text-decoration:none; color:var(--text);
+      background: rgba(16,16,26,.55);
+      border:1px solid var(--stroke);
+      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+      position:relative; overflow:hidden;
+      opacity:0; transform: translateY(10px);
+    }
+    .btn.show{ opacity:1; transform: translateY(0); transition: all .35s ease; }
+    .btn:active{ transform: scale(.985); }
+    .btn::before{
+      content:""; position:absolute; inset:-2px;
+      background: linear-gradient(90deg, transparent, rgba(255,106,0,.35), transparent);
+      transform: translateX(-120%); transition: transform .5s ease;
+    }
+    .btn:hover::before{ transform: translateX(120%); }
+
+    .icon{
+      width:42px; height:42px; border-radius:14px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, rgba(255,106,0,.18), rgba(255,255,255,.02));
+      border:1px solid rgba(255,106,0,.18);
+      flex:0 0 auto; font-size:18px;
+    }
+    .text{ flex:1; display:flex; flex-direction:column; gap:3px; min-width:0; }
+    .text b{ font-size:15px; font-weight:700; }
+    .text span{ font-size:12.5px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .arrow{ opacity:.75; }
+
+    .badge{
+      margin-top:12px; text-align:center; color:var(--muted); font-size:12px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(16,16,26,.35);
+    }
+    .footer{ margin-top:14px; text-align:center; font-size:12px; color:#bdbdd0; opacity:.9; }
+
+    .error{ padding:14px; margin:10px 6px; border:1px solid #ff4d4d55; border-radius:14px; background:#ff4d4d12; color:#ffd2d2; }
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
+    <div class="card">
+      <div class="top">
+        <div class="logo">
+          <img src="logo.png" alt="TouchTag"
+               onerror="this.remove(); this.parentElement.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>T</div>')" />
+        </div>
+        <div>
+          <h1 id="brandName">TouchTag</h1>
+          <p class="tagline" id="tagline">Loading…</p>
+        </div>
+      </div>
 
-<h2>Follow Us</h2>
+      <div class="links" id="links"></div>
 
-<a href="https://facebook.com/Touch.Tag0" target="_blank">Facebook</a>
-<a href="https://instagram.com/touc.htag" target="_blank">Instagram</a>
-<a href="https://wa.me/962795878887" target="_blank">WhatsApp</a>
+      <div class="badge">Made in Jordan • Powered by TouchTag</div>
+      <div class="footer">© TouchTag</div>
+    </div>
+  </div>
 
+  <script>
+    async function loadLinks(){
+      const linksEl = document.getElementById('links');
+      try{
+        // cache-bust so updates appear fast
+        const res = await fetch('links.json?ts=' + Date.now(), { cache: 'no-store' });
+        if(!res.ok) throw new Error('Failed to load links.json');
+        const data = await res.json();
+
+        document.getElementById('brandName').textContent = data.brandName || 'TouchTag';
+        document.getElementById('tagline').textContent = data.tagline || '';
+
+        linksEl.innerHTML = '';
+        (data.links || []).forEach((item, i) => {
+          const a = document.createElement('a');
+          a.className = 'btn';
+          a.href = item.url;
+          a.target = '_blank';
+          a.rel = 'noopener';
+
+          const iconClass = item.icon || 'fa-link';
+          const iconHtml =
+            iconClass.startsWith('fa-')
+              ? `<i class="fa-brands ${iconClass}"></i>`
+              : `<i class="fa-solid ${iconClass}"></i>`;
+
+          a.innerHTML = `
+            <div class="icon">${iconHtml}</div>
+            <div class="text">
+              <b>${item.title || 'Link'}</b>
+              <span>${item.subtitle || ''}</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+          `;
+
+          linksEl.appendChild(a);
+          setTimeout(() => a.classList.add('show'), 120 + i * 90);
+        });
+
+      }catch(e){
+        linksEl.innerHTML = `<div class="error">Error: ${e.message}</div>`;
+        document.getElementById('tagline').textContent = 'Please check links.json';
+      }
+    }
+    loadLinks();
+  </script>
 </body>
 </html>
