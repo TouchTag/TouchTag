@@ -1,315 +1,173 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TouchTag | Links</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TouchTag | Links</title>
 
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <style>
-    :root{
-      --bg:#0b0b10;
-      --card:#111118;
-      --card2:#0f0f15;
-      --text:#f6f6fb;
-      --muted:#bfc0d0;
-      --stroke:#ffffff12;
-      --shadow: 0 16px 50px rgba(0,0,0,.55);
-      --brand:#ff6a00;
-      --radius:22px;
-    }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background:
-        radial-gradient(900px 500px at 50% -10%, rgba(255,106,0,.18), transparent 60%),
-        linear-gradient(180deg, #06060a, #0b0b10 35%, #070710);
-      color:var(--text);
-      min-height:100vh;
-    }
-    .wrap{
-      max-width:420px;
-      margin:0 auto;
-      padding:22px 14px 40px;
-    }
+<style>
+:root{
+  --bg:#0b0b10;
+  --text:#f6f6fb;
+  --muted:#bfc0d0;
+  --stroke:#ffffff12;
+  --brand:#ff6a00;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  background:
+  radial-gradient(900px 500px at 50% -10%, rgba(255,106,0,.18), transparent 60%),
+  linear-gradient(180deg,#06060a,#0b0b10 35%,#070710);
+  color:var(--text);
+}
+.wrap{max-width:420px;margin:auto;padding:22px 14px 40px}
+.header{text-align:center}
+.logo{
+  width:96px;height:96px;border-radius:50%;
+  margin:8px auto 14px;
+  overflow:hidden;
+  border:6px solid #ffffff10;
+}
+.logo img{width:100%;height:100%;object-fit:cover}
+h1{margin:0;font-size:22px}
+.tagline{color:var(--muted);font-size:13px;margin:6px 0 12px}
 
-    /* Header */
-    .header{
-      text-align:center;
-      padding:18px 10px 8px;
-    }
-    .logo{
-      width:96px; height:96px;
-      border-radius:50%;
-      margin: 8px auto 14px;
-      background: #141423;
-      border: 6px solid #ffffff10;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      display:grid;
-      place-items:center;
-      position:relative;
-    }
-    .logo::after{
-      content:"";
-      position:absolute; inset:-2px;
-      border-radius:50%;
-      background: conic-gradient(from 220deg, rgba(255,106,0,.0), rgba(255,106,0,.55), rgba(255,106,0,.0));
-      filter: blur(10px);
-      opacity:.55;
-      z-index:-1;
-    }
-    .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .fallback{
-      font-weight:900; font-size:28px;
-      color:var(--brand);
-    }
-    h1{
-      margin:0;
-      font-size:22px;
-      letter-spacing:.2px;
-    }
-    .tagline{
-      margin:8px 0 12px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.35;
-    }
+.social{display:flex;justify-content:center;gap:10px;margin:10px 0 14px}
+.sbtn{
+  width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--stroke);
+  color:#fff;text-decoration:none;
+}
 
-    /* Social pills */
-    .social{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      margin: 12px 0 14px;
-    }
-    .sbtn{
-      width:42px; height:42px;
-      border-radius:50%;
-      display:grid; place-items:center;
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--stroke);
-      color: var(--text);
-      text-decoration:none;
-      box-shadow: 0 10px 28px rgba(0,0,0,.35);
-      transition: transform .15s ease, background .2s ease;
-    }
-    .sbtn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.09); }
+.map{
+  margin:8px 0 14px;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid var(--stroke);
+}
+.map iframe{
+  width:100%;
+  height:180px;
+  border:0;
+  display:block;
+}
+.map a{
+  display:block;
+  text-align:center;
+  padding:10px;
+  background:rgba(0,0,0,.35);
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+}
 
-    /* Map card (optional) */
-    .map{
-      margin: 8px 0 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--stroke);
-      border-radius: 18px;
-      overflow:hidden;
-      box-shadow: 0 14px 40px rgba(0,0,0,.35);
-    }
-    .map .img{
-      height:130px;
-      background:
-        radial-gradient(900px 400px at 20% 10%, rgba(255,106,0,.16), transparent 55%),
-        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: rgba(255,255,255,.8);
-      font-size:14px;
-      position:relative;
-    }
-    .map a{
-      display:block;
-      text-align:center;
-      padding:10px 12px;
-      background: rgba(0,0,0,.35);
-      color: var(--text);
-      text-decoration:none;
-      font-size:13px;
-      border-top: 1px solid var(--stroke);
-    }
-
-    /* Big buttons */
-    .list{ display:flex; flex-direction:column; gap:12px; }
-    .btn{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:14px 14px;
-      background: linear-gradient(180deg, #141421, #0e0e16);
-      border: 1px solid #ffffff12;
-      border-radius: 18px;
-      text-decoration:none;
-      color: var(--text);
-      box-shadow: 0 16px 46px rgba(0,0,0,.40);
-      position:relative;
-      overflow:hidden;
-      opacity:0;
-      transform: translateY(10px);
-    }
-    .btn.show{ opacity:1; transform: translateY(0); transition: all .35s ease; }
-
-    .btn::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: linear-gradient(90deg, transparent, rgba(255,106,0,.25), transparent);
-      transform: translateX(-130%);
-      transition: transform .6s ease;
-    }
-    .btn:hover::before{ transform: translateX(130%); }
-
-    .left{
-      display:flex; gap:12px; align-items:center;
-      min-width:0;
-    }
-    .ic{
-      width:44px; height:44px;
-      border-radius:14px;
-      display:grid; place-items:center;
-      background: rgba(255,255,255,.07);
-      border: 1px solid #ffffff14;
-      font-size:18px;
-      flex: 0 0 auto;
-    }
-    .txt{ min-width:0; }
-    .txt b{ display:block; font-size:15px; }
-    .txt small{
-      display:block;
-      color: var(--muted);
-      margin-top:3px;
-      font-size:12.5px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width: 250px;
-    }
-    .arrow{ opacity:.8; }
-
-    .footer{
-      text-align:center;
-      color: #bdbdd0;
-      opacity:.9;
-      font-size:12px;
-      margin-top:16px;
-    }
-
-    .error{
-      background:#ff4d4d12;
-      border:1px solid #ff4d4d55;
-      color:#ffd1d1;
-      padding:12px;
-      border-radius:14px;
-      margin-top:12px;
-      font-size:13px;
-    }
-  </style>
+.list{display:flex;flex-direction:column;gap:12px}
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px;
+  border-radius:18px;
+  background:linear-gradient(180deg,#141421,#0e0e16);
+  border:1px solid #ffffff12;
+  color:#fff;
+  text-decoration:none;
+}
+.left{display:flex;align-items:center;gap:12px}
+.ic{
+  width:44px;height:44px;border-radius:14px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.07);
+  border:1px solid #ffffff14;
+}
+.txt b{display:block;font-size:15px}
+.txt small{color:var(--muted);font-size:12px}
+.footer{text-align:center;color:#bdbdd0;font-size:12px;margin-top:16px}
+</style>
 </head>
+
 <body>
-  <div class="wrap">
+<div class="wrap">
 
-    <div class="header">
-      <div class="logo" id="logoBox">
-        <img id="logoImg" src="logo.png" alt="TouchTag"
-             onerror="this.remove(); document.getElementById('logoBox').insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>TT</div>')" />
-      </div>
-
-      <h1 id="brandName">TouchTag</h1>
-      <div class="tagline" id="tagline">Loading…</div>
-
-      <div class="social" id="social"></div>
-    </div>
-
-    <div class="map" id="map" style="display:none;">
-      <div class="img">
-        <i class="fa-solid fa-location-dot" style="font-size:22px; margin-right:8px;"></i>
-        Location Preview
-      </div>
-      <a id="mapBtn" href="#" target="_blank" rel="noopener">See Our Location</a>
-    </div>
-
-    <div class="list" id="list"></div>
-
-    <div class="footer">© TouchTag</div>
+<div class="header">
+  <div class="logo">
+    <img src="logo.png" alt="TouchTag"
+    onerror="this.remove(); this.parentElement.innerHTML='TT';">
   </div>
+  <h1>TouchTag</h1>
+  <div class="tagline">Smart NFC Keychains • One tap to connect</div>
 
-  <script>
-    async function init(){
-      const list = document.getElementById('list');
-      const social = document.getElementById('social');
+  <div class="social">
+    <a class="sbtn" href="https://facebook.com/Touch.Tag0" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+    <a class="sbtn" href="https://instagram.com/touc.htag" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a class="sbtn" href="https://wa.me/962795878887" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  </div>
+</div>
 
-      try{
-        const res = await fetch('links.json?ts=' + Date.now(), { cache:'no-store' });
-        if(!res.ok) throw new Error('links.json not found');
-        const data = await res.json();
+<div class="map">
+  <iframe 
+  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3385.2060768390747!2d35.885027799999996!3d31.9553056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDU3JzE5LjEiTiAzNcKwNTMnMDYuMSJF!5e0!3m2!1sen!2sjo!4v1771628634398!5m2!1sen!2sjo"
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+  <a href="https://maps.app.goo.gl/xwiNwKYu6hfyjHLn8" target="_blank">See Our Location</a>
+</div>
 
-        document.getElementById('brandName').textContent = data.brandName || 'TouchTag';
-        document.getElementById('tagline').textContent = data.tagline || '';
+<div class="list">
+  <a class="btn" href="https://wa.me/962795878887" target="_blank">
+    <div class="left">
+      <div class="ic"><i class="fa-brands fa-whatsapp"></i></div>
+      <div class="txt">
+        <b>Chat on WhatsApp</b>
+        <small>Direct message for quick response</small>
+      </div>
+    </div>
+    <i class="fa-solid fa-chevron-right"></i>
+  </a>
 
-        // logo from json if provided
-        if(data.logo){
-          const img = document.getElementById('logoImg');
-          if(img) img.src = data.logo + '?ts=' + Date.now();
-        }
+  <a class="btn" href="tel:+962795878887">
+    <div class="left">
+      <div class="ic"><i class="fa-solid fa-phone"></i></div>
+      <div class="txt">
+        <b>Call us</b>
+        <small>+962 79 587 8887</small>
+      </div>
+    </div>
+    <i class="fa-solid fa-chevron-right"></i>
+  </a>
 
-        // social icons
-        social.innerHTML = '';
-        (data.social || []).forEach(s => {
-          const a = document.createElement('a');
-          a.className = 'sbtn';
-          a.href = s.url;
-          a.target = '_blank';
-          a.rel = 'noopener';
-          a.innerHTML = `<i class="fa-brands ${s.icon}"></i>`;
-          social.appendChild(a);
-        });
+  <a class="btn" href="https://instagram.com/touc.htag" target="_blank">
+    <div class="left">
+      <div class="ic"><i class="fa-brands fa-instagram"></i></div>
+      <div class="txt">
+        <b>Instagram</b>
+        <small>Follow our page</small>
+      </div>
+    </div>
+    <i class="fa-solid fa-chevron-right"></i>
+  </a>
 
-        // map
-        if(data.map && data.map.enabled){
-          document.getElementById('map').style.display = 'block';
-          const mb = document.getElementById('mapBtn');
-          mb.textContent = data.map.buttonText || 'See Our Location';
-          mb.href = data.map.url || '#';
-        }
+  <a class="btn" href="https://facebook.com/Touch.Tag0" target="_blank">
+    <div class="left">
+      <div class="ic"><i class="fa-brands fa-facebook-f"></i></div>
+      <div class="txt">
+        <b>Facebook</b>
+        <small>Follow our page</small>
+      </div>
+    </div>
+    <i class="fa-solid fa-chevron-right"></i>
+  </a>
+</div>
 
-        // big buttons
-        list.innerHTML = '';
-        (data.buttons || []).forEach((b, i) => {
-          const a = document.createElement('a');
-          a.className = 'btn';
-          a.href = b.url;
-          a.target = '_blank';
-          a.rel = 'noopener';
+<div class="footer">© TouchTag</div>
 
-          const isBrand = (b.icon || '').startsWith('fa-');
-          const iconHTML = isBrand
-            ? `<i class="fa-brands ${b.icon}"></i>`
-            : `<i class="fa-solid ${b.icon || 'fa-link'}"></i>`;
-
-          a.innerHTML = `
-            <div class="left">
-              <div class="ic">${iconHTML}</div>
-              <div class="txt">
-                <b>${b.title || 'Link'}</b>
-                <small>${b.subtitle || ''}</small>
-              </div>
-            </div>
-            <i class="fa-solid fa-chevron-right arrow"></i>
-          `;
-
-          list.appendChild(a);
-          setTimeout(()=>a.classList.add('show'), 140 + i*90);
-        });
-
-      }catch(e){
-        list.innerHTML = `<div class="error">Error: ${e.message}<br/>Make sure links.json exists in the repo root.</div>`;
-        document.getElementById('tagline').textContent = 'Please check links.json';
-      }
-    }
-
-    init();
-  </script>
+</div>
 </body>
 </html>
