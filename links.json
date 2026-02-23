@@ -7,26 +7,10 @@
     { "icon": "fa-instagram", "url": "https://instagram.com/touc.htag" },
     { "icon": "fa-whatsapp", "url": "https://wa.me/962795878887" }
   ],
-  "map": {
-  "enabled": true,
-  "buttonText": "See Our Location",
-  "url": "https://maps.app.goo.gl/xwiNwKYu6hfyjHLn8",
-  "embed": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3385.2060768390747!2d35.885027799999996!3d31.9553056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDU3JzE5LjEiTiAzNcKwNTMnMDYuMSJF!5e0!3m2!1sen!2sjo!4v1771628634398!5m2!1sen!2sjo"
-}
+
   },
   "buttons": [
-    {
-      "title": "Chat on WhatsApp",
-      "subtitle": "Direct message for quick response",
-      "icon": "fa-whatsapp",
-      "url": "https://wa.me/962795878887"
-    },
-    {
-      "title": "Call us",
-      "subtitle": "+962 79 587 8887",
-      "icon": "fa-phone",
-      "url": "tel:+962795878887"
-    },
+
     {
       "title": "Instagram",
       "subtitle": "Follow our page",
@@ -39,5 +23,17 @@
       "icon": "fa-facebook-f",
       "url": "https://facebook.com/Touch.Tag0"
     }
+        {
+      "title": "Chat on WhatsApp",
+      "subtitle": "Direct message for quick response",
+      "icon": "fa-whatsapp",
+      "url": "https://wa.me/962795878887"
+    },
+      "map": {
+  "enabled": true,
+  "buttonText": "See Our Location",
+  "url": "https://maps.app.goo.gl/xwiNwKYu6hfyjHLn8",
+  "embed": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3385.2060768390747!2d35.885027799999996!3d31.9553056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDU3JzE5LjEiTiAzNcKwNTMnMDYuMSJF!5e0!3m2!1sen!2sjo!4v1771628634398!5m2!1sen!2sjo"
+}
   ]
 }
